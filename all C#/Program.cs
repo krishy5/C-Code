@@ -13,8 +13,82 @@ using System.Configuration;
 
 namespace all_C_
 {
-    internal class Program
+    //-------------------------------
+
+    // Sructures
+    struct point // lightweight way to store data
+        {
+            public int abc;
+            public int abwc;
+
+
+        }
+
+    //-------------------------------
+
+    // declaring class
+    class Program1
+         {
+        private int age;  // field
+        public int Age;   // property
+            public void nx()
+           {
+            point p1;
+            p1.abc = 10;
+            p1.abwc = 20;
+            Console.WriteLine("Point: (" + p1.abc + "," + p1.abwc + ")");
+           }
+         }
+    
+    //-------------------------------
+
+    class Person : Program1
+        {
+            
+           public void Greet()
+            {
+                 string Nameu ="krish";
+                Console.WriteLine("Hello, " + Nameu);
+            }
+        }
+
+    //-------------------------------
+
+    class BankAccount
     {
+        private double balance; // only accessible inside class
+
+        public void Deposit(double amount)
+        {
+            balance += amount;  // can access private field
+        }
+
+        public void ShowBalance()
+        {
+            Console.WriteLine(balance);
+        }
+    }
+
+    //-------------------------------
+
+    // To String 
+    class Person7
+    {
+        public string Name;
+        public int Age;
+
+        public override string ToString()
+        {
+            return Name + " (" + Age + " years)";
+        }
+    }
+
+    //-------------------------------
+
+    internal class Program : Person
+    {
+        public int aba; // class Fields variable inside class
+
         static void Main(string[] args)
         {
             //Declare this statement inside the method to Purpose
@@ -588,12 +662,47 @@ namespace all_C_
                 }
                 return summ;
             }
-            int[] baa = new int[]
+            int[] qwe4 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int ads =  array(qwe4);
+            Console.WriteLine(ads);
+
+            //-------------------------------------------
+
+            // Exception handling
+
+            // try catch
+
+            try
             {
-                1,2,3,4,5,6,7,8,9,10
-            };
-            array(baa);
-           
+                int n = int.Parse("krish");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message); // error message
+                Console.WriteLine("Invalid Num");
+            }
+
+
+            // running method from different class
+            Person p2 = new Person();
+            p2.Greet();
+
+            Program1 px = new Program1();
+            px.nx();
+
+            BankAccount acc = new BankAccount();
+            acc.Deposit(5000);
+            acc.ShowBalance();  // 5000
+            // acc.balance = 1000; X cannot access private
+
+            // To String
+
+            Person7 p = new Person7();
+            p.Name = "Alice";
+            p.Age = 30;
+            Console.WriteLine(p);  // automatically calls ToString()
+
         }
     }
+    
 }
